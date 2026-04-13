@@ -1,25 +1,24 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        // Approach - 1
-        Set<Integer> set = new HashSet<>();
-        for(int i=0;i<nums.length;i++){
-            if(set.contains(nums[i])){
+        //  int duplicateData = 0;
+        // Arrays.sort(nums);
+        // for(int i=0;i<nums.length-1;i++){
+        //     if(nums[i] == nums[i+1]){
+        //         duplicateData = nums[i];
+        //     }
+        // }
+
+        // return duplicateData;
+
+        Map<Integer,Integer> mapData = new HashMap<>();
+        for(int i=0;i< nums.length;i++){
+            if(mapData.containsKey(nums[i])){
                 return nums[i];
+            }else{
+                mapData.put(nums[i],i);
             }
-            set.add(nums[i]);
         }
 
         return -1;
-
-       // Approach - 2
-       int duplicateNumber = 0;
-       Arrays.sort(nums);
-        for(int i=0;i<nums.length-1;i++){
-            if(nums[i] == nums[i+1]){
-                duplicateNumber = nums[i];
-            }
-        }
-        return duplicateNumber;
     }
-       
 }
